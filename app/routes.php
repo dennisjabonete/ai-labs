@@ -11,7 +11,4 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('api/v1/switchstatus', array('as' => 'switchstatus', 'uses' => 'SwitchStatusController@getSwitchStatus'));
