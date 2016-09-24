@@ -1,14 +1,10 @@
 <?php
+Route::group(array('before' => 'guest'), function()
+{
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
-*/
+	Route::get('/unit', array('uses' => 'UnitController@index', 'as' => 'index'));
+	Route::get('/api/v1/canvass/setup', array('uses' => 'UnitController@canvasssetup', 'as' => 'canvasssetup'));
+	Route::get('/api/v1/switch/setup', array('uses' => 'UnitController@switchsetup', 'as' => 'switchsetup'));
+	Route::post('/api/v1/switch', array('uses' => 'SetupController@switchstatus', 'as' => 'switchstatus'));
 
-Route::get('api/v1/switchstatus', array('as' => 'switchstatus', 'uses' => 'SwitchStatusController@getSwitchStatus'));
+});
